@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UITS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+html{scroll-behavior:smooth;}
+body{background:#f4f8ff;color:#333;line-height:1.6;}
+
+/* PREVIEW SWITCH */
+.preview-wrapper{max-width:1200px;margin:auto;transition:.4s;}
+.preview-wrapper.mobile{
+    max-width:390px;
+    border:6px solid #111;
+    border-radius:22px;
+    margin:20px auto;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(0,0,0,.3);
+}
+
+/* HEADER */
+header{
+    background:linear-gradient(90deg,#004080,#0077cc);
+    padding:15px 0;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+.container{
+    max-width:2560px;
+    margin:auto;
+    padding:0 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+header h1{color:#fff;font-weight:700;}
+
+.switch-btn{
+    background:#ff9800;
+    color:#26077a;
+    padding:8px 14px;
+    border-radius:20px;
+    font-size:14px;
+    font-weight:600;
+    border:none;
+    cursor:pointer;
+}
+
+nav{display:flex;gap:20px;}
+nav a{color:white;text-decoration:none;font-weight:500;}
+nav a:hover{color:#ffcc00;}
+
+.more-btn{
+    display:none;
+    font-size:26px;
+    color:white;
+    cursor:pointer;
+}
+
+.preview-wrapper.mobile nav{display:none;}
+.preview-wrapper.mobile .more-btn{display:block;}
+
+.phone-dropdown{
+    display:none;
+    position:absolute;
+    top:70px;
+    right:20px;
+    background:#004080;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.3);
+}
+.phone-dropdown a{
+    display:block;
+    padding:14px 20px;
+    color:white;
+    text-decoration:none;
+}
+.phone-dropdown a:hover{background:#0077cc;}
+.phone-dropdown.show{display:block;}
+
+/* HERO */
+.hero{
+    background:url('https://images.unsplash.com/photo-1596496058040-9c0e1a264ba7') center/cover;
+    height:80vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+.hero h2{font-size:42px;color:#0062ff;}
+.hero p{font-size:20px;margin:15px 0;}
+.btn{
+    background:#ff9800;
+    color:#26077a;
+    padding:14px 30px;
+    border-radius:6px;
+    text-decoration:none;
+    font-weight:600;
+}
+
+/* SECTIONS */
+.section{padding:60px 20px;max-width:1200px;margin:auto;}
+.section h3{text-align:center;color:#004080;margin-bottom:30px;font-size:32px;}
+
+/* DEPARTMENTS */
+.faculty-box{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,.1);
+    margin-bottom:25px;
+}
+.faculty-box h4{
+    color:#004080;
+    margin-bottom:15px;
+    font-size:22px;
+}
+.faculty-box ul{list-style:none;}
+.faculty-box li{
+    padding:8px 0;
+    border-bottom:1px solid #eee;
+}
+
+/* FACULTY MEMBERS */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+.card{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,.1);
+}
+.card img{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-bottom:10px;
+}
+
+/* GALLERY */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:15px;
+}
+.gallery img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    border-radius:12px;
+}
+
+/* VIDEO */
+.video-wrapper{
+    position:relative;
+    width:100%;
+    max-width:900px;
+    margin:auto;
+    padding-top:56.25%;
+}
+.video-wrapper iframe{
+    position:absolute;
+    top:0;left:0;
+    width:100%;height:100%;
+}
+
+/* FORM */
+form{
+    max-width:600px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:12px;
+}
+form input,form select{width:100%;padding:12px;margin-bottom:15px;}
+
+footer{background:#004080;color:white;text-align:center;padding:20px;}
+
+.fade{opacity:0;transform:translateY(30px);transition:1s;}
+.fade.show{opacity:1;transform:none;}
+</style>
+</head>
+
+<body>
+
+<div class="preview-wrapper" id="preview">
+
+<header>
+<div class="container">
+<div style="display:flex;align-items:center;gap:10px;">
+<h1>UITS</h1>
+<button class="switch-btn" onclick="toggleView()">📱 / 🖥</button>
+</div>
+
+<div class="more-btn" id="moreBtn">⋮</div>
+
+<nav>
+<a href="#departments">Departments</a>
+<a href="#faculty">Faculty</a>
+<a href="#gallery">Gallery</a>
+<a href="#video">Video</a>
+<a href="#admissions">Admissions</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<div class="phone-dropdown" id="phoneDropdown">
+<a href="#departments">Departments</a>
+<a href="#faculty">Faculty</a>
+<a href="#gallery">Gallery</a>
+<a href="#video">Video</a>
+<a href="#admissions">Admissions</a>
+<a href="#contact">Contact</a>
+</div>
+</div>
+</header>
+
+<section class="hero">
+<div>
+<h2>University of Information Technology and Sciences</h2>
+<p>Empowering students for a brighter future</p>
+<a href="#admissions" class="btn">Apply Now</a>
+</div>
+</section>
+
+<!-- DEPARTMENTS -->
+<section class="section fade" id="departments">
+<h3>Academic Departments</h3>
+
+<div class="faculty-box">
+<h4>Faculty of Science & Engineering</h4>
+<ul>
+<li>Department of Computer Science and Engineering (CSE)</li>
+<li>Department of Information Technology (IT)</li>
+<li>Department of Electrical and Electronic Engineering (EEE)</li>
+<li>Department of Pharmacy</li>
+<li>Department of Civil Engineering (CE)</li>
+</ul>
+</div>
+
+<div class="faculty-box">
+<h4>Faculty of Liberal Arts and Social Sciences</h4>
+<ul>
+<li>Department of Social Works</li>
+<li>Department of English</li>
+</ul>
+</div>
+
+<div class="faculty-box">
+<h4>Faculty of Law</h4>
+<ul>
+<li>Department of Law</li>
+</ul>
+</div>
+
+<div class="faculty-box">
+<h4>Faculty of Business</h4>
+<ul>
+<li>Department of Business Studies</li>
+</ul>
+</div>
+</section>
+
+<!-- FACULTY MEMBERS -->
+<section class="section fade" id="faculty">
+<h3>Faculty Members</h3>
+<div class="cards">
+<div class="card">
+<img src="https://randomuser.me/api/portraits/men/32.jpg">
+<h4>Dr. John Smith</h4>
+<p>CSE</p>
+</div>
+<div class="card">
+<img src="https://randomuser.me/api/portraits/women/44.jpg">
+<h4>Prof. Anna Lee</h4>
+<p>IT</p>
+</div>
+<div class="card">
+<img src="https://randomuser.me/api/portraits/men/55.jpg">
+<h4>Dr. Robert Brown</h4>
+<p>EEE</p>
+</div>
+</div>
+</section>
+
+<!-- GALLERY -->
+<section class="section fade" id="gallery">
+<h3>Campus Gallery</h3>
+<div class="gallery">
+<img src="https://images.unsplash.com/photo-1562774053-701939374585">
+<img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1">
+<img src="https://images.unsplash.com/photo-1607237138185-eedd9c632b0b">
+</div>
+</section>
+
+<!-- VIDEO -->
+<section class="section fade" id="video">
+<h3>Campus Life</h3>
+<div class="video-wrapper">
+<iframe src="https://www.youtube.com/embed/1hHMwLxN6EM"
+allowfullscreen></iframe>
+</div>
+</section>
+
+<!-- ADMISSIONS -->
+<section class="section fade" id="admissions">
+<h3>Admission Form</h3>
+<form>
+<input placeholder="Full Name" required>
+<input type="email" placeholder="Email" required>
+<select required>
+<option>Select Department</option>
+<option>CSE</option>
+<option>IT</option>
+<option>EEE</option>
+<option>Pharmacy</option>
+<option>Civil</option>
+<option>Business</option>
+<option>Law</option>
+<option>English</option>
+<option>Social Works</option>
+</select>
+<button class="btn">Submit</button>
+</form>
+</section>
+
+<footer id="contact">
+<p>© 2026 University of Information Technology and Sciences</p>
+</footer>
+
+</div>
+
+<script>
+function toggleView(){
+document.getElementById("preview").classList.toggle("mobile");
+document.getElementById("phoneDropdown").classList.remove("show");
+}
+moreBtn.onclick=()=>phoneDropdown.classList.toggle("show");
+
+const fades=document.querySelectorAll(".fade");
+window.addEventListener("scroll",()=>{
+fades.forEach(f=>{
+if(f.getBoundingClientRect().top<window.innerHeight-100){
+f.classList.add("show");
+}
+});
+});
+</script>
+
+</body>
+</html>

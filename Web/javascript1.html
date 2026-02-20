@@ -1,0 +1,325 @@
+<html>
+
+    <head>
+        <title>Practice JavaScript</title>
+    </head>
+    <body>
+         
+
+
+        <script>
+
+            // print anything: 
+            document.write("Hello JavaScript. ");
+            document.write("This is my first printed line.<br> <br>")
+
+
+            //variables:
+            // let,var,const(fixed)
+            var x=10;
+            var y=20;
+            var z=x+y;
+            document.write(z+"<br>");
+
+            var m=16
+            document.write(m+"<br>");
+
+            let a;
+            a=40;
+            document.write(a+"<br>");
+
+            let b=45;
+            document.write(b+"<br>");
+
+            const v=60;
+            document.write(v+'<br>');
+            
+            const s=65;
+            document.write(s+'<br>');
+
+            document.write("<br><br>");
+
+            //Primitive Data Type
+            var Num=50; 
+            document.write(Num+"<br>");
+            var Str="Rabbi";
+            document.write(Str+"<br>");
+            var bol=true;
+            document.write(bol+"<br>");
+            var M;
+            document.write(M+"<br>");
+            var N=null;
+            document.write(N+"<br>");
+
+
+            document.write("<br><br>");
+
+            // Non-Primitive Data Type
+            let A={
+                Name:"Siam Hossain",
+                Id:1088,
+                Sec:'B',
+                isStudent:true
+            } 
+            document.write(A+"<br>");
+            document.write(A.Name+"<br>");
+            document.write(A.Id+"<br>"); 
+            document.write(A.Sec+"<br>");
+            document.write(A.isStudent+'<br>')
+            
+            document.write("<br>");
+            
+            var B=['Dhaka', 'Rangpur', 'Rajshahi', 'Sirajgonj', 'Narayangonj'];
+            document.write(B+"<br>");
+            document.write(B[0]+"<br>"); 
+            document.write(B[3]+'<br>');  
+
+            document.write("<br><br>");
+
+            //Javascript operators:
+            /*  Arithmatic operators(+,-,*,/,%,++,--)
+                Comparison operators(==,===,!=,!==,>,>=,<,<=)
+                Bitwise operators(&,|,^,~,<<,>>,>>>)
+                Logocal operators(&&,||,!)
+                Assignment operators(=,+=,-=,*=,/=,%=)
+            */
+
+            //if-else statement:
+            var age=18;
+            if(age>=18){
+                document.write("You are adult.<br>")
+            } else {
+                document.write("You are not an adult.<br>")
+            }
+
+            document.write("<br><br>");
+
+            //switch statement:
+            var marks=95;
+            switch(true){
+                case (marks<=100 && marks>80): 
+                    document.write('Grade A');
+                    break;
+                case (marks<=80 && marks>70): 
+                    document.write('Grade A-');
+                    break;
+                case (marks<=70 && marks>60): 
+                    document.write('Grade B');
+                    break;
+                case (marks<=60 && marks>50): 
+                    document.write('Grade C');
+                    break;
+                case (marks<=50 && marks>40): 
+                    document.write('Grade D');
+                    break;
+                default: 
+                    document.write('Fail');
+                    break;                
+            }
+
+            document.write("<br><br>");
+
+            //Basic for loop:
+            for(var i=0; i<20; i++){
+                document.write(i+" <button>Submit</button> <br>")
+            }
+
+            document.write("<br><br>");
+
+            //JavaScript function:
+            function addition(){
+                var n1=35;
+                var n2=20;
+                document.write((n1+n2)+"<br>");
+            }
+            addition();
+            
+            function addParameter(num1,num2,num3,num4){
+                document.write((num1+num2+num3+num4)+"<br>");
+            }
+            addParameter(100,60,200,300);
+
+            function addReturn(num1,num2){
+                return(num1+num2);
+            }
+            var res = addReturn(50,60)*2;
+            document.write(res+"<br>");
+
+
+            document.write("<br><br>");
+
+
+            //JavaScript object:
+            var MyPc={
+                brand:"Lenovo",
+                screen:"15.6",
+                isLaptop:true,
+                ram:"4GB",
+                disk:"256GB",
+                isSSD:true,
+                processor:"core i3",
+                admin:'Siam'
+            }
+
+            document.write(MyPc+'<br>')
+            document.write(MyPc.brand+"<br>");
+            document.write(MyPc['processor']+"<br>");
+
+            document.write("<br><br>");
+
+            //for in loop:
+            var color=['Orange', 'Red', 'Green', 'Pink', 'Blue'];
+            for(var item in color){
+                document.write(color[item]+"<br>");
+            }
+            document.write("<br>");
+
+            let num=[25,35,58,47,59,23]
+            for(let element in num){
+                document.write(num[element]+'<br>')
+            }
+            document.write("<br>");
+
+            for(let property in MyPc){
+                document.write(MyPc[property]+"<br>");
+            }
+
+            document.write("<br><br>");
+
+            //Array concate() and from() and filter() and find() and findIndex():
+            var arr=['A','B','C'];
+            var arr2=['D','E','F'];
+            
+            var arr3= arr.concat(arr2);
+            document.write(arr3+"<br>");
+            
+            var arr4= arr2.concat(arr);
+            document.write(arr4+"<br>");
+
+            var sent="My name Siam";
+            var sentArr=Array.from(sent);
+            document.write(sentArr[3]+"<br>");
+
+            var numArray=[30,32,50,64,10,20,15,80];
+
+            var resfilter = numArray.filter(function(item){
+                return item>50;
+            });
+            document.write(resfilter+"<br>");
+
+            var resfind = numArray.find(function(item){
+                return item<35;
+            });
+            document.write(resfind+"<br>");
+
+            var resfindIndex = numArray.findIndex(function(item){
+                return item<35;
+            });
+            document.write(resfindIndex+"<br>");
+
+
+            //Array ForEach()
+            var numArray1=[30,32,50,64,10,20,15,80];
+            numArray1.forEach(function(item){
+                document.write(item+' ');
+            })
+            document.write('<br>');
+
+            document.write('<br><br>');
+
+            //Array Includes() And IndexOf() And Reverse() And 
+            var numArray2=[30,32,50,64,10,20,15,80];
+            var inclRes = numArray2.includes(50);
+            document.write(inclRes+'<br>');
+
+            var indx = numArray2.indexOf(50);
+            document.write(indx+'<br>');
+
+            var rev = numArray2.reverse();
+            document.write(rev+'<br>');
+
+            numArray2.push(100);
+            numArray2.push(150);
+            document.write(numArray2+'<br>');
+            numArray2.pop();
+            document.write(numArray2+'<br>');
+
+            document.write('<br><br>');
+
+            //Array Slice And Sort And Splice 
+            var numArray5=[30,32,50,64,10,20,15,80];
+            numArray5.sort();
+            document.write(numArray5+'<br>');
+            numArray5.sort().reverse();
+            document.write(numArray5+'<br>');
+
+            var numArray5=[30,32,50,64,10,20,15,80];
+            var slic=numArray5.slice(0,3);
+            document.write(slic+'<br>');
+
+            //numArray5.splice(index,removeCount,item);
+            var numArray5=[30,32,50,64,10,20,15,80];
+
+            //delete:
+            //numArray5.splice(1,2);
+
+            //add:
+            numArray5.splice(2,0,22);
+            document.write(numArray5+'<br>');
+
+            document.write('<br><br>');
+
+        /*
+            // JavaScript Date Object
+            var obj = new Date();
+            document.write(obj.getDate()+"<br>");
+            document.write(obj.getDay()+"<br>");
+            document.write(obj.getFullYear()+"<br>");
+            document.write(obj.getHours()+"<br>");
+            document.write(obj.getMinutes()+"<br>");
+            document.write(obj.getSeconds()+"<br>");
+            document.write(obj.getMilliseconds()+"<br>");
+            document.write(obj.getMonth()+"<br>");
+            document.write(obj.getTime()+"<br>");
+            document.write(obj.getTimezoneOffset()+"<br>");
+            document.write(obj.getVarDate()+"<br>");
+         
+            document.write('<br><br>');
+        */
+        
+            // JavaScript Math Object
+            var nums = -8;
+            document.write(Math.abs(nums)+"<br>");
+            var nums = 6.2;
+            document.write(Math.ceil(nums)+"<br>");
+            var nums = 6.2;
+            document.write(Math.floor(nums)+"<br>");
+
+            document.write(Math.max(20, 1, 58, 69, 45, 78)+"<br>");
+            document.write(Math.min(20, 1, 58, 69, 45, 78)+"<br>");
+            document.write(Math.random()+"<br>");
+            var nums = 6.2;
+            document.write(Math.round(nums)+"<br>");
+       
+
+            document.write('<br><br>');
+
+
+            // JavaScript Numbers
+            var nums = 6.2;
+            document.write(Number.isInteger(nums)+"<br>");
+
+            var Pnums = "4.98";
+            document.write(Number.parseFloat(Pnums)+"<br>");
+            document.write(Number.parseInt(Pnums)+"<br>");
+
+            var nums2 = 45.26545452;
+            document.write(nums2.toFixed(2)+"<br>");
+            document.write(nums2.toString()+"<br>");
+           
+
+        </script>
+
+
+    </body>
+</html>
